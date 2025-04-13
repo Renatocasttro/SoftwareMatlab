@@ -1,5 +1,5 @@
 %adicionando sub-pastas do diretorio principal para que o programa consiga
-%ler seu conteudo a
+%ler seu conteudo
 addpath(genpath('Bancosdados'));
 addpath(genpath('Botoes'));
 addpath(genpath('CompressaoIH'));
