@@ -1,0 +1,51 @@
+function[]= errof ()
+global errov;
+global errorv;
+
+switch errov;
+    case 1;
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        set(findobj(gcf,'Tag','textofinal'),'String','UM OU MAIS DADOS NAO FORAM INSERIDOS CORRETAMENTE.');
+        errorv = '';
+    case 2;
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        set(findobj(gcf,'Tag','textofinal'),'String','PERFIL MONOSSIMETRICO NAO PERMITIDO.');
+        errorv = 'NAO PERMITIDO';
+    case 3;
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        set(findobj(gcf,'Tag','textofinal'),'String','PERFIL DE ALMA ESBELTA NAO PERMITIDO.');
+        errorv = 'NAO PERMITIDO';
+    case 4;
+        set(findobj(gcf,'Tag','textofinal'),'String','NENHUM PERFIL DO BANCO DE DADOS RESISTE AS SOLICITAÇOES INSERIDAS.');
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        errorv = '';
+    case 5;
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        set(findobj(gcf,'Tag','textofinal'),'String','PERFIL COMPRIMIDO MUITO ESBELTO (>200).');
+        errorv = 'NAO PERMITIDO';
+    case 6;
+        set(findobj(gcf,'Tag','textofinal'),'String','MESMO COM ENRIJECEDORES, PERFIL NÃO RESISTIRÁ.');
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        errorv = '';
+    case 7;
+        set(findobj(gcf,'Tag','textofinal'),'String','DESCULPE, POR ENQUANTO ESTE PROGRAMA NÃO CALCULA TRAÇAO EM PERFIL I.');
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        errorv = 'NAO PERMITIDO';
+    case 8;
+        set(findobj(gcf,'Tag','textofinal'),'String',' ESBELTEZ DO ELEMENTO ACIMA DO LIMITE');
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        errorv = 'NAO PERMITIDO';       
+    case 9;
+        set(findobj(gcf,'Tag','textofinal'),'String',' CONFIGURAÇÃO DA LIGAÇÃO INADEQUADA (Ct < 0.60)');
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        errorv = 'NAO PERMITIDO';
+    case 10;
+        set(findobj(gcf,'Tag','trac7'),'String',' LIGAÇÃO INADEQUADA (Ct < 0.60)');
+        set(findobj(gcf,'Tag','trac7'),'ForegroundColor','red');
+        errorv = 'NAO PERMITIDO';
+    case 11;
+        set(findobj(gcf,'Tag','erroCt'),'String','UM OU MAIS DADOS NÃO FORAM INSERIDOS');
+        set(findobj(gcf,'Tag','erroCt'),'ForegroundColor','red');
+        errorv = 'NAO PERMITIDO';
+   
+end
