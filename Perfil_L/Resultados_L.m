@@ -4,11 +4,18 @@ global Ncsd;
 global Ntrd;
 global Ntsd;
 
-%Imprimindo valor da resistencia à compressão/tração calculada
+%Imprimindo valor da resistencia à compressão calculada
 if Ncrd > 0 
     set(findobj(gcf,'Tag','res1'),'String',Ncrd);
 else
+    set(findobj(gcf,'Tag','res1'),'String','(*)');
+end
+
+%Imprimindo valor da resistencia à tração calculada
+if Ntrd > 0 
     set(findobj(gcf,'Tag','res8'),'String',Ntrd);
+else
+    set(findobj(gcf,'Tag','res8'),'String','(*)');
 end
 
 %Imprimindo valor da resistencia à flexao calculada
@@ -25,8 +32,9 @@ end
 %Imprimindo valor da resistencia à flexao assimetrica calculada
 % set(findobj(gcf,'Tag','res7'),'String',flecomp);
 
-if Ncrd > 0 
-    if Ncrd > Ncsd
+if Ncsd > 0
+        set(findobj(gcf,'Tag','cx8'),'String','');
+    if Ncrd >= Ncsd
         set(findobj(gcf,'Tag','cx1'),'String','RESISTIU');
         set(findobj(gcf,'Tag','cx1'),'ForegroundColor','[0 0.573 0]');
         resultado1 = 1;
@@ -36,16 +44,24 @@ if Ncrd > 0
         resultado1 = 0;
     end
 else
-    if Ntrd > Ntsd
-            set(findobj(gcf,'Tag','cx8'),'String','RESISTIU');
-            set(findobj(gcf,'Tag','cx8'),'ForegroundColor','[0 0.573 0]');
-            resultado1 = 1;
-    else
-            set(findobj(gcf,'Tag','cx8'),'String','NAO RESISTIU');
-            set(findobj(gcf,'Tag','cx8'),'ForegroundColor','red');
-            resultado1 = 0;
-    end
+    set(findobj(gcf,'Tag','cx1'),'String','');
 end
+
+if Ntsd > 0 
+    set(findobj(gcf,'Tag','cx1'),'String','');
+    if Ntrd >= Ntsd
+        set(findobj(gcf,'Tag','cx8'),'String','RESISTIU');
+        set(findobj(gcf,'Tag','cx8'),'ForegroundColor','[0 0.573 0]');
+        resultado1 = 1;
+    else
+        set(findobj(gcf,'Tag','cx8'),'String','NAO RESISTIU');
+        set(findobj(gcf,'Tag','cx8'),'ForegroundColor','red');
+        resultado1 = 0;
+    end
+else
+    set(findobj(gcf,'Tag','cx8'),'String','');
+end
+
 
 %colocando cor verde caso resista e vermelho caso nao resista ao esforço
 %solicitante

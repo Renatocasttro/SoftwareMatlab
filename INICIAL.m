@@ -13,6 +13,8 @@ addpath(genpath('Perfil_I'));
 addpath(genpath('Perfil_L'));
 addpath(genpath('Perfil_T'));
 addpath(genpath('Perfil_C'));
+addpath(genpath('Rotinas_Cb'));
+addpath(genpath('Perfil_C_D_e'));
 
 %banco de dados de aços
 global tiposdeaco;
@@ -53,6 +55,8 @@ global L_lam1;
 load('L_lam1.mat');
 global L_lam2;
 load('L_lam2.mat');
+global hSTD;
+global hPopup;
 
-%abre DIMPER no centro da tela
-movegui(DIMPER, 'center');
+%abre STD no centro da tela
+movegui(STD, 'center');

@@ -45,12 +45,13 @@ global Mn2x;
 global Mn3x;
 global errov;
 
+
 %perfil monossimétrico
 if f4 ==1
     Mn2y = 0;
     
-    %alma nao esbelta
-    if fla <= flar
+    % Limite para alma esbelta - item H.1.2 da NBR 8800/08 
+    if fla <= flar % alma nao esbeltam,conforme mitem H.1.2. da NBR 8800/08
         
     %Mr = momento com efeito de tensoes residuais, Mp = momento de %plastificaçao,
     %Mn = momento nominal, Mc = momento critico; sendo o índice 1 = FLA / FMT, índice
@@ -125,29 +126,33 @@ if f4 ==1
         
     %perfis monosimétricos de alma esbelta
     else
-        if f1 == 1;
+        if f1 == 1; % I soldado
             % para (FMT) - escoamento da mesa tracionada
+            % item H.2.1, NBR 8800.08,  pag.138
             Mn1x = Winf*fy;
-            
-            kpg = 1-ar*(fla-5.7*sqrt(E/fy))/(1200+300*ar);
+            % % item H.2.2 da NBR 8800/08
+            kpg = 1-ar*(fla-5.7*sqrt(E/fy))/(1200+300*ar); 
             if kpg >1
                 kpg = 1;
             end
             Mp3x = kpg*Wsup*fy;
-            
-            if ar > 10
+            % item H.1.3.B da NBR 8800/08
+            if ar > 10 
                 errov = 3;
             end
-            
-            % Para FLT
+            % item H.1.3.c da NBR 8800/08
+            if fla>=260
+                errov = 3;
+            end
+            % Para FLT - item H.2.2 da NBR 8800/08
             % para viga curta
-            if flt <= fltp
+            if flt <= fltp  % item H.2.2.a
                 Mn3x = Mp3x;
              
             %para viga longa    
-            else if flt > fltr;
+            else if flt > fltr; % item H. 2.2.c
                     Mn3x = Cb*kpg*pi^2*E*Wsup/(flt^2);
-                %para viga intermediaria    
+                %para viga intermediaria % item H.2.2.b   
                 else
                     Mn3x = Cb*kpg*Wsup*fy*(1-0.3*(flt-fltp)/(fltr-fltp));
                 end
@@ -156,7 +161,7 @@ if f4 ==1
                 end
             end
             
-            % para FLM
+            % para FLM - Item H.2.3 da NBR 8800/08
             Mp2x = kpg*Wsup*fy;
             
             % para mesa compacta
@@ -263,7 +268,12 @@ else
         
     %perfis duplamente simétricos de alma esbelta
     else
+        % item H.1.3.b da NBR 8800/08
         if ar >10
+            errov = 3;
+        end
+        % item H.1.3.c da NBR 8800/08
+        if fla>=260
             errov = 3;
         end
         Mn2y = 0;
@@ -317,7 +327,7 @@ else
     end
 end
 
-%Mxrd deverá ser o menor valor entre as resistencias encontradas
+%Mxrd deverá ser o menor valor entre as resistencias encontradas em kN m.
 Mxrd = min([Mn1x Mn2x Mn3x])/(ya1*100);
         
 %Myrd deverá ser o menor valor entre as resistencias encontradas

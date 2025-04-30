@@ -18,6 +18,7 @@ global cisyr;
 global kv;
 
 %calculo dos parametros de esbeltez para cisalhamento em Y
+% item 5.4.3.1.1 da NBR 8800/08
 cisyp = 1.10*sqrt(kv*E/fy);
 cisyr = 1.37*sqrt(kv*E/fy);
 
@@ -35,12 +36,14 @@ end
 
 %eixo X
 %calculo dos parametros de esbeltez para cisalhamento em X
+%item 5.4.3.5, da NBR 8800/05
 cisxp = 1.10*sqrt(1.2*E/fy);
 cisxr = 1.37*sqrt(1.2*E/fy);
 
 %perfil monossimétrico
 if f4 ==1
-    Vxrd = '(*)';
+    Vxrd = '(*)'; % Situação não prevista na NBR 8800/08 em relação a
+                  % perfis U e H.
 else
     Aw = 2*bf*tf/100;
     if flm <= cisxp

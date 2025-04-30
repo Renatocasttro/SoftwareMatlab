@@ -24,11 +24,15 @@ global Zx;
 global Zy;
 global f1;
 global f4;
+global errov;
+global Aux5;
 
+Aux5=0;
 %soldado
 if f1 == 1;
     %monossimetrico            
     if f4 == 1;
+                    % valores em mm
                     d = str2num(get(findobj(gcf,'Tag','dimc1'),'String'));
                     tfs = str2num(get(findobj(gcf,'Tag','dimc2'),'String'));
                     tfi = str2num(get(findobj(gcf,'Tag','dimc3'),'String'));
@@ -37,11 +41,24 @@ if f1 == 1;
                     bfi = str2num(get(findobj(gcf,'Tag','dimc6'),'String'));
     %duplamente simétrico            
     else
+                    % valores em mm
                     d = str2num(get(findobj(gcf,'Tag','dimc1'),'String'));
                     tf = str2num(get(findobj(gcf,'Tag','dimc2'),'String'));
                     tw = str2num(get(findobj(gcf,'Tag','dimc3'),'String'));
                     bf = str2num(get(findobj(gcf,'Tag','dimc4'),'String'));
     end
+    
+    % Buscando erro para variáveis vazias ou NaN para perfis soldados
+       if isempty(d) || isnan(d) || isempty(tf) || isnan(tf) || isempty(tw) || isnan(tw) || isempty(bf) || isnan(bf)
+            errov = 1;
+            errof();
+            Aux5=1; % informa que tem algum problema de preechimento nos 
+            % dados geométricos do perfil soldado. Na função Botão_calular
+            % () vai fazer a verficação do valor de Aux5 e sópermitirá o 
+            % proceguimento do processamento se Aux5=0, ou seja se não
+            % nenhum erro de preenchimeto de dados.
+       end
+        
 %laminado    
 else
     %monossimetrico
@@ -82,4 +99,14 @@ else
                     Zy = str2num(get(findobj(gcf,'Tag','dimc16'),'String'));
                 
     end
+     % Buscando erro para variáveis vazias ou NaN para perfis laminados
+       if isempty(d) || isnan(d) || isempty(tf) || isnan(tf) || isempty(tw) || isnan(tw) || isempty(bf)|| isempty(Zx)||isempty(Zy)||isempty(J) || isnan(bf)
+            errov = 1;
+            errof();
+            Aux5=1; % informa que tem algum problema de preechimento nos 
+            % dados geométricos do perfil soldado. Na função Botão_calular
+            % () vai fazer a verficação do valor de Aux5 e sópermitirá o 
+            % proceguimento do processamento se Aux5=0, ou seja se não
+            % nenhum erro de preenchimeto de dados.
+       end
 end

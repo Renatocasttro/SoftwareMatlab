@@ -77,8 +77,8 @@ global Mysd;
 global Vysd;
 global Vxrd;
 global Vxsd;
-
-
+global aux2;
+global matriz_tracao;
 global errov;
 
 
@@ -151,30 +151,42 @@ end
    
 % imprimindo valores para tração
 
+if Ntsd>0 % se existir tração
 set(findobj(gcf,'Tag','trac1'),'String',Ac);
 set(findobj(gcf,'Tag','trac2'),'String',An);
 set(findobj(gcf,'Tag','trac3'),'String',Ae); 
 set(findobj(gcf,'Tag','trac4'),'String',Ct);
 set(findobj(gcf,'Tag','trac5'),'String',Ntsd);
 
-%if Ct>0.6    
-%set(findobj(gcf,'Tag','trac6'),'String',Ntrd);
+% imprindo parâmetros dos vínculos das extemidades dos perfis na tração
+set(findobj(gcf,'Tag','trac8'),'String',matriz_tracao(aux2,4)); % dp (mm)
+set(findobj(gcf,'Tag','trac9'),'String',matriz_tracao(aux2,3)); % n
+set(findobj(gcf,'Tag','trac10'),'String',matriz_tracao(aux2,5)); % lc (mm)
 
-%if Ntsd==0  
+
+if Ct>0.6    
+set(findobj(gcf,'Tag','trac6'),'String',Ntrd);
+
+if Ntsd==0  
     set(findobj(gcf,'Tag','trac7'),'String','');
-%else
-%if Ntsd > Ntrd;
-%    set(findobj(gcf,'Tag','trac7'),'String','NAO RESISTIU');
-%    set(findobj(gcf,'Tag','trac7'),'ForegroundColor','red');
-%else
-%    set(findobj(gcf,'Tag','trac7'),'String','RESISTIU');
-%    set(findobj(gcf,'Tag','trac7'),'ForegroundColor','[0 0.573 0]');
-%end
-%end
-%else
-%    errov=10;
-%    errof();
-%imprimindo Cw e Cb na tela
+else
+if Ntsd > Ntrd;
+    set(findobj(gcf,'Tag','trac7'),'String','NAO RESISTIU');
+    set(findobj(gcf,'Tag','trac7'),'ForegroundColor','red');
+else
+    set(findobj(gcf,'Tag','trac7'),'String','RESISTIU');
+    set(findobj(gcf,'Tag','trac7'),'ForegroundColor','[0 0.573 0]');
+end
+end
+else
+    errov=10;
+    errof();
+end
+
+end % final se existir tração
+
+
+% imprimindo Cw e Cb na tela
 set(findobj(gcf,'Tag','flt5'),'String',Cb);
 
 

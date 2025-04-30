@@ -6,22 +6,19 @@ global kv;
 if f1 == 1
     P_GEO_C_SOL();
 else
-    flexao_C();
-    P_GEO_C_LAM();
-    calculo_rmc();
-    esbeltez_C_novo();
-    calculo_Wef();
-    
-    kv = 5;    
-end     
+    P_GEO_C_LAM(); 
+end
 if Ntsd > 0 
     Tracao_C();
-    
 else
-    Compressao_C();
-    
+    Compressao_C();    
 end
-%Esbeltez_C();
+    esbeltez_C_novo();
+    calculo_rm();
+    flexao_C();
+    calculo_Wef(); 
+    kv = 5;         
+Esbeltez_global();
 flexao_assimetrica_C();
 flexao_composta_C();
 cisalhamento_C();

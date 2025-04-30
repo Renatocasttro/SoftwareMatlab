@@ -1,4 +1,4 @@
-function[] = relatorio_I()
+function[] = relatorio_L()
 global d;
 global tf;
 global tw;
@@ -77,8 +77,16 @@ global Ac;
 global An;
 global Ae;
 global Ct;
+global aux2;
+global matriz_tracao;
 
 global errov;
+
+
+
+
+
+
 
 
 %imprimindo valores do perfil
@@ -276,12 +284,17 @@ end
 end
    
 % imprimindo valores para tração
-
+if Ntsd >0
 set(findobj(gcf,'Tag','trac1'),'String',Ac);
 set(findobj(gcf,'Tag','trac2'),'String',An);
 set(findobj(gcf,'Tag','trac3'),'String',Ae); 
 set(findobj(gcf,'Tag','trac4'),'String',Ct);
 set(findobj(gcf,'Tag','trac5'),'String',Ntsd);
+
+% imprindo parâmetros dos vínculos das extemidades dos perfis na tração
+set(findobj(gcf,'Tag','trac8'),'String',matriz_tracao(aux2,4)); % dp (mm)
+set(findobj(gcf,'Tag','trac9'),'String',matriz_tracao(aux2,3)); % n
+set(findobj(gcf,'Tag','trac10'),'String',matriz_tracao(aux2,5)); % lc (mm)
 
 
 if Ct>0.6    
@@ -302,5 +315,6 @@ else
     errov=10;
     errof();
 end
+end % final de tração
 
 

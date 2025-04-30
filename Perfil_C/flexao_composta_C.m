@@ -17,7 +17,7 @@ global flar;
 
 %flexocompressao
 if f4 ==1;
-    if Ncsd >= 0
+    if Ncsd > 0
         x = Ncrd;
         if Ncsd/Ncrd >= 0.2
             flecomp = Ncsd/Ncrd + 8*(Mxsd/Mxrd)/9;

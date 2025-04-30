@@ -8,13 +8,17 @@ global figura1;
 global C_lam1_novo;
 
 %bloqueando funçao para perfil ser sempre monossimétrico
-set(findobj(gcf,'Tag','radiobutton4'),'Value',1);
-set(findobj(gcf,'Tag','radiobutton2'),'Value',1);
-set(findobj(gcf,'Tag','radiobutton1'),'Enable','off');
-set(findobj(gcf,'Tag','radiobutton4'),'Enable','off');
+set(findobj(gcf,'Tag','radiobutton1'),'Enable','on');
+set(findobj(gcf,'Tag','radiobutton2'),'Enable','on');
+set(findobj(gcf,'Tag','radiobutton3'),'Enable','off');
+set(findobj(gcf,'Tag','radiobutton4'),'Enable','on');
 set(findobj(gcf,'Tag','radiobutton5'),'Enable','off');
 
-%habilitando esforços em Ypara perfis monossimetricos
+% set(findobj(gcf,'Tag','radiobutton2'),'Value',1);
+set(findobj(gcf,'Tag','radiobutton4'),'Value',1);
+
+
+%habilitando esforços em Y para perfis monossimetricos
 set(findobj(gcf,'Tag','esf3'),'Enable','on');
 set(findobj(gcf,'Tag','esf4'),'Enable','on');
 set(findobj(gcf,'Tag','pushbutton14'),'Visible','on');
@@ -79,10 +83,10 @@ set(findobj(gcf,'Tag','pushbutton14'),'Visible','on');
                     set(findobj(gcf,'Tag','cx5'),'String','');
                     set(findobj(gcf,'Tag','cx6'),'String','');
                     set(findobj(gcf,'Tag','cx7'),'String','');
-                    set(findobj(gcf,'Tag','esf2'),'Enable','off');                  
-                    set(findobj(gcf,'Tag','esf4'),'Enable','off');
-                    set(findobj(gcf,'Tag','esf3'),'Enable','off');
-                    set(findobj(gcf,'Tag','esf5'),'Enable','off');
+                    set(findobj(gcf,'Tag','esf2'),'Enable','on');                  
+                    set(findobj(gcf,'Tag','esf4'),'Enable','on');
+                    set(findobj(gcf,'Tag','esf3'),'Enable','on');
+                    set(findobj(gcf,'Tag','esf5'),'Enable','on');
 
                     
        

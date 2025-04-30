@@ -11,6 +11,7 @@ global fy;
 global ya1;
 global f4;
 
+% Momento máximo permitodo - de acordo com o item 5.4.2.2 da NR 8800.08.
 if f4 == 1
     W = min(Wsup,Winf);
     Mmax = 1.5*fy*W/(ya1*100);

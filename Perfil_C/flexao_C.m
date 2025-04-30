@@ -33,7 +33,7 @@ global Zxc;
 global Wy;
 global Zy;
 global Iy;
-global Cb1;
+global Cb;
 global Mxrd;
 global Myrd;
 global ya1;
@@ -50,6 +50,7 @@ global Mp1y;
 global Mr1y;
 global Mnxmax;
 global Mnymax;
+
 
 %alma nao esbelta
     if fla <= flar
@@ -135,6 +136,8 @@ global Mnymax;
             
         end
         %analise para FLT
+        % rotina para cálculo de Cb
+        % calculo_rm();
         %seçao compacta
         if flt <= fltp
             Mn3x = Mp3x;
@@ -142,12 +145,12 @@ global Mnymax;
         else
             %seçao esbelta
             if flt > fltr
-                Mc3x = Cb1*(pi^2)*E*Iy*sqrt((Cw/Iy)*(1+0.039*J*(Lb^2)/Cw))/(Lb^2);
+                Mc3x = Cb*(pi^2)*E*Iy*sqrt((Cw/Iy)*(1+0.039*J*(Lb^2)/Cw))/(Lb^2);
                 Mn3x = Mc3x;
                 
             %seçao semicompacta    
             else
-                Mn3x = Cb1*(Mp3x - (Mp3x-Mr3x)*(flt-fltp)/(fltr-fltp));
+                Mn3x = Cb*(Mp3x - (Mp3x-Mr3x)*(flt-fltp)/(fltr-fltp));
             end
             if Mn3x > Mp3x
                 Mn3x = Mp3x;

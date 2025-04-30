@@ -32,8 +32,8 @@ global kc;
 
 Q = CALCULO_DE_Q_T(f5,h,bf,tf,tw,bfs,tfs,bfi,tfi,f1,Ag,E,fy,kc);
 X = CALCULO_DE_X_T(E,Ix,Iy,kx,ky,kz,L,f5,Cw,G,J,Q,Ag,fy,r0,y0);
-Ncrd = ESFORCO_RESISTENTE(Q,X,Ag,fy,ya1);
-
+% Ncrd = ESFORCO_RESISTENTE(Q,X,Ag,fy,ya1);
+Ncrd =(X*Q*Ag*fy)/(ya1);
 end
 
 

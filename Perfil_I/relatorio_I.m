@@ -73,6 +73,14 @@ global ts1;
 global bs1;
 global ts2;
 global bs2;
+global aux2;
+global matriz_tracao;
+global Ac;
+global An;
+global Ae; 
+global Ct;
+global errov;
+
 
 %imprimindo valores do perfil
 if f1 == 1;
@@ -226,7 +234,8 @@ set(findobj(gcf,'Tag','cis5'),'String',flm);
 set(findobj(gcf,'Tag','cis6'),'String',cisxp);
 set(findobj(gcf,'Tag','cis7'),'String',cisxr);
 
-        
+
+
 % imprimindo valores para compressão
 set(findobj(gcf,'Tag','compre1'),'String',Qs);
 set(findobj(gcf,'Tag','compre2'),'String',Qa);
@@ -297,7 +306,7 @@ else if flt <= fltp
         set(findobj(gcf,'Tag','flt4'),'String','Viga Intermediaria');
     end
 end
-
+% Compressão
 if Ncsd > Ncrd;
     set(findobj(gcf,'Tag','compre8'),'String','NAO RESISTIU');
     set(findobj(gcf,'Tag','compre8'),'ForegroundColor','red');
@@ -305,6 +314,42 @@ else
     set(findobj(gcf,'Tag','compre8'),'String','RESISTIU');
     set(findobj(gcf,'Tag','compre8'),'ForegroundColor','[0 0.573 0]')
 end
+
+% Tração
+% imprimindo valores para tração
+if Ntsd>0  % se existir tração
+set(findobj(gcf,'Tag','trac1'),'String',Ac);
+set(findobj(gcf,'Tag','trac2'),'String',An);
+set(findobj(gcf,'Tag','trac3'),'String',Ae); 
+set(findobj(gcf,'Tag','trac4'),'String',Ct);
+set(findobj(gcf,'Tag','trac5'),'String',Ntsd);
+
+
+% imprindo parâmetros dos vínculos das extemidades dos perfis na tração
+set(findobj(gcf,'Tag','trac8'),'String',matriz_tracao(aux2,4)); % dp (mm)
+set(findobj(gcf,'Tag','trac9'),'String',matriz_tracao(aux2,3)); % n
+set(findobj(gcf,'Tag','trac10'),'String',matriz_tracao(aux2,5)); % lc (mm)
+ 
+
+if Ct>0.6    
+set(findobj(gcf,'Tag','trac6'),'String',Ntrd);
+
+if Ntsd==0  
+    set(findobj(gcf,'Tag','trac7'),'String','');
+else
+if Ntsd > Ntrd;
+    set(findobj(gcf,'Tag','trac7'),'String','NAO RESISTIU');
+    set(findobj(gcf,'Tag','trac7'),'ForegroundColor','red');
+else
+    set(findobj(gcf,'Tag','trac7'),'String','RESISTIU');
+    set(findobj(gcf,'Tag','trac7'),'ForegroundColor','[0 0.573 0]');
+end
+end
+else
+    errov=10;
+    errof();
+end
+end  % final de se existir tração
 
 if fleassi > 1
     set(findobj(gcf,'Tag','flea'),'ForegroundColor','red');
@@ -346,21 +391,23 @@ if Vxrd > 0
 else
     set(findobj(gcf,'Tag','cis8'),'String','(*)');    
 end
-
+    % FLEXOCOMPRESSÃO - COMPRESSÃO PARA PERFIL I
 if Ncsd >= 0
     if Ncsd/Ncrd >= 0.2
         set(findobj(gcf,'Tag','flec'),'String','Ncsd/Ncrd + 8*(Mxsd/Mxrd+Mysd/Myrd)/9:'); 
     else
         set(findobj(gcf,'Tag','flec'),'String','Ncsd/(Ncrd*2) + (Mxsd/Mxrd+Mysd/Myrd):');
     end
-else
-    %FLEXOTRACAO - LEMBRAR DE DESMARCAR QUANDO FOR IMPLEMENTADA A FUNÇÃO DE
-    %TRAÇAO PARA PERFIL I
-%     if Ntsd/Ntrd >= 0.2
-%         set(findobj(gcf,'Tag','flec'),'String','Ntsd/Ntrd + 8*(Mxsd/Mxrd+Mysd/Myrd)/9:');
-%     else
-%         set(findobj(gcf,'Tag','flec'),'String','Ntsd/(Ntrd*2) + (Mxsd/Mxrd+Mysd/Myrd):');
-%     end
+end
+if Ntsd>=0
+    %FLEXOTRACAO - TRAÇAO PARA PERFIL I
+    
+     if Ntsd/Ntrd >= 0.2
+         set(findobj(gcf,'Tag','flec'),'String','Ntsd/Ntrd + 8*(Mxsd/Mxrd+Mysd/Myrd)/9:');
+     else
+         set(findobj(gcf,'Tag','flec'),'String','Ntsd/(Ntrd*2) + (Mxsd/Mxrd+Mysd/Myrd):');
+     end
+     
 end
 
 

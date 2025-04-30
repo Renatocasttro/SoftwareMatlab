@@ -9,10 +9,11 @@ else
 end
 
 if Ntsd > 0 
-    Tracao_L();
+    Tracao_L()     
 else
     Compressao_L();
 end
+Esbeltez_global();
 %Esbeltez_L();
 %flexao_L();
 Resultados_L();

@@ -1,4 +1,4 @@
-function[] = relatorio_I()
+function[] = relatorio_T()
 global d;
 global tf;
 global tw;
@@ -77,8 +77,12 @@ global Ac;
 global An;
 global Ae;
 global Ct;
-
 global errov;
+global aux2;
+global matriz_tracao;
+global MrFlt;
+global MrFlm;
+
 
 
 %imprimindo valores do perfil
@@ -251,8 +255,12 @@ set(findobj(gcf,'Tag','text57'),'String',perfilname);
 %imprimindo se o perfil é permitido ou nao
 set(findobj(gcf,'Tag','textoerro'),'String',errorv);
       
-
-
+%imprimindo valores para cisalhamento no plano da alma
+set(findobj(gcf,'Tag','cis1'),'String',fla);
+set(findobj(gcf,'Tag','cis2'),'String',cisyp);
+set(findobj(gcf,'Tag','cis3'),'String',cisyr);
+set(findobj(gcf,'Tag','cis4'),'String',Vyrd);
+set(findobj(gcf,'Tag','cis9'),'String',kv);
 
 % imprimindo valores para compressão
 set(findobj(gcf,'Tag','compre1'),'String',Qs);
@@ -262,6 +270,7 @@ set(findobj(gcf,'Tag','compre4'),'String',X);
 set(findobj(gcf,'Tag','compre5'),'String',Q);
 set(findobj(gcf,'Tag','compre6'),'String',Ncrd);
 set(findobj(gcf,'Tag','compre7'),'String',Ncsd);
+
 
 if Ncsd==0 
     set(findobj(gcf,'Tag','compre8'),'String',''); 
@@ -276,12 +285,17 @@ end
 end
    
 % imprimindo valores para tração
-
+if Ntsd>0
 set(findobj(gcf,'Tag','trac1'),'String',Ac);
 set(findobj(gcf,'Tag','trac2'),'String',An);
 set(findobj(gcf,'Tag','trac3'),'String',Ae); 
 set(findobj(gcf,'Tag','trac4'),'String',Ct);
 set(findobj(gcf,'Tag','trac5'),'String',Ntsd);
+
+% imprindo parâmetros dos vínculos das extemidades dos perfis na tração
+set(findobj(gcf,'Tag','trac8'),'String',matriz_tracao(aux2,4)); % dp (mm)
+set(findobj(gcf,'Tag','trac9'),'String',matriz_tracao(aux2,3)); % n
+set(findobj(gcf,'Tag','trac10'),'String',matriz_tracao(aux2,5)); % lc (mm)
 
 
 if Ct>0.6    
@@ -302,3 +316,51 @@ else
     errov=10;
     errof();
 end
+end
+
+% imprimindo valores flexão
+% imprimindo valores para FLM
+set(findobj(gcf,'Tag','flm1'),'String',flm);
+set(findobj(gcf,'Tag','flm2'),'String',flmp);
+set(findobj(gcf,'Tag','flm3'),'String',flmr); 
+
+% de acordo com o item G.2.3 da NBR 8800.08, não existes valores para FLT
+% para pertis T.
+
+%imprimindo valores de momento resistente para FLM, FLT
+set(findobj(gcf,'Tag','flt6'),'String',MrFlt/(ya1*100));
+set(findobj(gcf,'Tag','flm5'),'String',MrFlm/(ya1*100));
+% Para perfil T, a norma 8800.08 não prevê´FLA
+
+% Classificação do pefil quanto à esbeltez de acordo com o item 5.1.2.1.1
+% e G.2.3 (Anexo G) da NBR 8800.08. Estado limite FLM
+if flm > flmr
+    set(findobj(gcf,'Tag','flm4'),'String','Esbelta');
+else if flm <= flmp
+        set(findobj(gcf,'Tag','flm4'),'String','Compacta');
+    else
+        set(findobj(gcf,'Tag','flm4'),'String','Semi-Compacta');
+    end
+end
+
+% imprimindo valores para momento máximo admissível, conforme item 5.4.2.2
+% da NBR 8800.08.
+set(findobj(gcf,'Tag','mmax1'),'String',Mmax);
+set(findobj(gcf,'Tag','mmax3'),'String',Mmay); 
+
+%imprimindo momento resistente calculado
+set(findobj(gcf,'Tag','mres2'),'String',Mxrd);
+% para seção T, a norma 8800.08 não prevê Myrd.
+
+%imprimindo valor para flexao composta
+set(findobj(gcf,'Tag','flec2'),'String',flecomp);
+
+if flm > flmr
+    set(findobj(gcf,'Tag','flm4'),'String','Esbelta');
+else if flm <= flmp
+        set(findobj(gcf,'Tag','flm4'),'String','Compacta');
+    else
+        set(findobj(gcf,'Tag','flm4'),'String','Semi-Compacta');
+    end
+end
+

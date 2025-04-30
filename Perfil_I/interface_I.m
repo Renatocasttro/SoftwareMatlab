@@ -9,9 +9,12 @@ global IHSmsim1;
 
 %habilitando botoes de monossimétricos que podem ser desabilitados ao
 %trocar de perfil
+set(findobj(gcf,'Tag','radiobutton1'),'Enable','on');
+set(findobj(gcf,'Tag','radiobutton2'),'Enable','on');
+set(findobj(gcf,'Tag','radiobutton3'),'Enable','of');
 set(findobj(gcf,'Tag','radiobutton4'),'Enable','on');
 set(findobj(gcf,'Tag','radiobutton5'),'Enable','on');
-set(findobj(gcf,'Tag','radiobutton1'),'Enable','on');
+
 
 %habilitando listas de perfis comerciais
 set(findobj(gcf,'Tag','popupmenu2'),'Enable','on');

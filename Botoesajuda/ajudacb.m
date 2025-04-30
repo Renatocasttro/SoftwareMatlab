@@ -22,7 +22,7 @@ function varargout = ajudacb(varargin)
 
 % Edit the above text to modify the response to help ajudacb
 
-% Last Modified by GUIDE v2.5 05-Sep-2018 15:31:11
+% Last Modified by GUIDE v2.5 16-Jun-2023 16:16:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -73,3 +73,19 @@ function varargout = ajudacb_OutputFcn(hObject, eventdata, handles)
 
 % Get default command line output from handles structure
 varargout{1} = handles.output;
+
+
+% --- Executes on mouse press over axes background.
+function axes1_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes during object creation, after setting all properties.
+function axes1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to axes1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: place code in OpeningFcn to populate axes1

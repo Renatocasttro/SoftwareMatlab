@@ -6,17 +6,31 @@ global f4;
 global f5;
 global figura1;
 global L_lam1;
+global pe;
+global Mxsd;
+global Mysd;
+global Vxsd;
+global Vysd;
 
-%bloqueando funçao para perfil ser sempre monossimétrico
-set(findobj(gcf,'Tag','radiobutton4'),'Value',1);
-set(findobj(gcf,'Tag','radiobutton1'),'Enable','off');
+% bloqueando funçao para perfil ser sempre duplamente simétrico e laminado
+% quando o sistema for icrementado para processar perfil L assimétrico e/ou
+% soldado, estas configurações deverão ser ajustadas.
+set(findobj(gcf,'Tag','radiobutton1'),'Enable','on'); % perfil soldado
+set(findobj(gcf,'Tag','radiobutton2'),'Enable','on'); % perfil laminado
+% set(findobj(gcf,'Tag','radiobutton2'),'Value',1); 
+
+set(findobj(gcf,'Tag','radiobutton3'),'Enable','off');
 set(findobj(gcf,'Tag','radiobutton4'),'Enable','off');
-set(findobj(gcf,'Tag','radiobutton5'),'Enable','off');
+set(findobj(gcf,'Tag','radiobutton5'),'Enable','on'); % perfil duplamente simétrico.
+set(findobj(gcf,'Tag','radiobutton5'),'Value',1);% aparece previamente selecionado
 
 %habilitando esforços em Ypara perfis monossimetricos
 set(findobj(gcf,'Tag','esf3'),'Enable','on');
 set(findobj(gcf,'Tag','esf4'),'Enable','on');
 set(findobj(gcf,'Tag','pushbutton14'),'Visible','off');
+
+% f1=0; % perfil laminado.
+% f2=1; % Perfil soldado.
 
        %perfil soldado
        if f1 == 1;
@@ -63,8 +77,7 @@ set(findobj(gcf,'Tag','pushbutton14'),'Visible','off');
                     set(findobj(gcf,'Tag','dimc15'),'Visible','on');
                     set(findobj(gcf,'Tag','dimc16'),'Enable','off');
                     set(findobj(gcf,'Tag','dimc16'),'Visible','off');
-                    set(findobj(gcf,'Tag','dimc17'),'Enable','off');
-                    
+                    set(findobj(gcf,'Tag','dimc17'),'Enable','off');     
                     set(findobj(gcf,'Tag','res1'),'String','(*)');
                     set(findobj(gcf,'Tag','res2'),'String','(*)');
                     set(findobj(gcf,'Tag','res3'),'String','(*)');
@@ -136,4 +149,24 @@ set(findobj(gcf,'Tag','pushbutton14'),'Visible','off');
                     set(findobj(gcf,'Tag','esf5'),'Enable','off');
                    
                 
-        end
+       end
+        
+if pe==2 % perfil L - para o perfil L esta versão admite somente
+    % solicitações normais.
+                    % fazendo com que a interface não mostre valores de
+                    % solictaçoes para o esta versao náo programa ainda
+                    % não alcança para perfil L, seja porque ainda não foi
+                    % implementado ou a norma não prevê
+                    set(findobj(gcf,'Tag','esf2'),'String',''); % para momento em x,
+                    set(findobj(gcf,'Tag','esf3'),'String',''); % momento em y; 
+                    set(findobj(gcf,'Tag','esf4'),'String',''); % cortante em x; 
+                    set(findobj(gcf,'Tag','esf5'),'String',''); % cortante em y;       
+    Mxsd=0;
+    Mysd=0;
+    Vxsd=0;
+    Vysd=0;  
+end
+       
+       
+       
+       

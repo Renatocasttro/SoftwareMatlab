@@ -25,7 +25,10 @@ global Zx;
 global Zy;
 global f1;
 global f2;
+global Aux5;
+global errov;
 
+Aux5=0
 %soldado
 if f1 == 1;
     %duplamente simétrico            
@@ -34,7 +37,19 @@ if f1 == 1;
                     tf = str2num(get(findobj(gcf,'Tag','dimc2'),'String'));
                     tw = str2num(get(findobj(gcf,'Tag','dimc3'),'String'));
                     bf = str2num(get(findobj(gcf,'Tag','dimc4'),'String'));
-    end
+end
+
+ % Buscando erro para variáveis vazias ou NaN
+       if isempty(d) || isnan(d) || isempty(tf) || isnan(tf) || isempty(tw) || isnan(tw) || isempty(bf) || isnan(bf)
+            errov = 1;
+            errof();
+            Aux5=1; % informa que tem algum problema de preechimento nos 
+            % dados geométricos do perfil soldado. Na função Botão_calular
+            % () vai fazer a verficação do valor de Aux5 e sópermitirá o 
+            % proceguimento do processamento se Aux5=0, ou seja se não
+            % nenhum erro de preenchimeto de dados.
+       end
+
 %laminado    
   if f2 == 1;              
     %duplamente simetrico            
@@ -56,5 +71,5 @@ if f1 == 1;
                     Zx = str2num(get(findobj(gcf,'Tag','dimc15'),'String'));
                     Zy = str2num(get(findobj(gcf,'Tag','dimc16'),'String'));
                 
-    end
+  end
 end

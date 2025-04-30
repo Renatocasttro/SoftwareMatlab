@@ -1,6 +1,6 @@
 function[] = Config_inicial(handles)
 %configurações iniciais para agilizar os cálculos para o usuário
-% aaaa
+
 %atribuindo imagens aos botões de perfis
 icone1 = imread('perfili.jpg');
 set(handles.icon1,'CData',icone1);
@@ -16,8 +16,10 @@ icone6 = imread('redondotubular.jpg');
 set(handles.icon6,'CData',icone6);
 icone7 = imread('quadradotubular.jpg');
 set(handles.icon7,'CData',icone7);
+icone8 = imread('Perfil_Dobr_Ce.jpg');
+set(handles.icon8,'CData',icone8);
 
-%atribuindo imagens aos botões de ajuda
+%atribuindo imagens aos botões de ajudaclc
 botaoajuda = imread('botaoajuda.PNG');
 set(handles.pushbutton1,'CData',botaoajuda);
 set(handles.pushbutton2,'CData',botaoajuda);
@@ -28,7 +30,7 @@ set(handles.pushbutton11,'CData',botaoajuda);
 %ao perfil I, soldado, monossimétrico
 %a variavel "pe" está relacionada ao perfil escolhido
 set(handles.radiobutton2,'Value',1);
-set(handles.radiobutton4,'Value',1);
+set(handles.radiobutton5,'Value',1);
 set(handles.radiobutton3,'Enable','off');
 global pe;
 pe = 1;
@@ -60,16 +62,16 @@ set(handles.res8,'String','(*)');
 set(handles.prop2,'String','250');
 set(handles.prop4,'String','400');
 
-%Valor inicial para Cb e Ct
+%Valor inicial para Cb e Ct (parâmetros de flexão e tração)
 global ct_otm;
 ct_otm = 0;
-set(handles.esfcb,'String','1.00');
-set(handles.esfcb1,'String','1.00');
-set(handles.esfcb2,'String','1.00');
+% set(handles.esfcb,'String','1.00');
+% set(handles.esfcb1,'String','1.00');
+% set(handles.esfcb2,'String','1.00');
 
 %icones extras caso necessário
-set(findobj(gcf,'Tag','icon8'),'Enable','off');
-set(findobj(gcf,'Tag','icon8'),'Visible','off');
+% set(findobj(gcf,'Tag','icon8'),'Enable','off');
+% set(findobj(gcf,'Tag','icon8'),'Visible','off');
 set(findobj(gcf,'Tag','icon9'),'Enable','off');
 set(findobj(gcf,'Tag','icon9'),'Visible','off');
 set(findobj(gcf,'Tag','icon10'),'Enable','off');

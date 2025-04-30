@@ -59,7 +59,8 @@ set(findobj(gcf,'Tag','res6'),'String',fleassi);
 %Imprimindo valor da resistencia à flexao composta calculada
 set(findobj(gcf,'Tag','res7'),'String',flecomp);
 
-if Ncsd >= 0 
+if Ncsd > 0
+        set(findobj(gcf,'Tag','cx8'),'String','');
     if Ncrd >= Ncsd
         set(findobj(gcf,'Tag','cx1'),'String','RESISTIU');
         set(findobj(gcf,'Tag','cx1'),'ForegroundColor','[0 0.573 0]');
@@ -74,6 +75,7 @@ else
 end
 
 if Ntsd > 0 
+    set(findobj(gcf,'Tag','cx1'),'String','');
     if Ntrd >= Ntsd
         set(findobj(gcf,'Tag','cx8'),'String','RESISTIU');
         set(findobj(gcf,'Tag','cx8'),'ForegroundColor','[0 0.573 0]');
@@ -129,6 +131,12 @@ else
     set(findobj(gcf,'Tag','cx5'),'String','NAO RESISTIU');
     set(findobj(gcf,'Tag','cx5'),'ForegroundColor','red');
     resultado5 = 0;
+end
+
+if f4==1 % não é necessário informar resultados de Myrd e Vxrd para....
+         % ... perfis monossimétricos.
+   set(findobj(gcf,'Tag','cx3'),'String','');
+   set(findobj(gcf,'Tag','cx4'),'String','');
 end
 
 %colocando cor verde caso resista e vermelho caso nao resista ao esforço

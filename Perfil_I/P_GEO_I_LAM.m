@@ -19,6 +19,8 @@ global ryt;
 global Ysup;
 global hc;
 global hp;
+global Iycmin;
+
 
 % Fez-se a correção de todas as unidades das dimensões do perfil para cm.
 if f5 == 1;
@@ -31,6 +33,7 @@ else
     Cw =((d/10-(tf/10))^2*Iy)/4;
     Iyc = tfs*(bfs^3)/120000;
     Iyt = tfi*(bfi^3)/120000;
+    Iycmin=min(Iyc,Iyt);
     alfay = Iyc/Iyt;
     ryc = sqrt((Iyc + (Ysup-tfs/10)*tw^3/1000)/(tfs*bfs/100+(Ysup-tfs/10)*tw/10));
     hc = 2*(Ysup-tfs/10);

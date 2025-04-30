@@ -6,16 +6,27 @@ global f4;
 global f5;
 global figura1;
 global T_lam1;
+global Vxsd;
+global Mysd;
+global pe;
 
 %bloqueando funçao para perfil ser sempre monossimétrico
+set(findobj(gcf,'Tag','radiobutton1'),'Enable','on');
+set(findobj(gcf,'Tag','radiobutton2'),'Enable','on');
+set(findobj(gcf,'Tag','radiobutton3'),'Enable','of');
+set(findobj(gcf,'Tag','radiobutton4'),'Enable','on');
 set(findobj(gcf,'Tag','radiobutton4'),'Value',1);
-set(findobj(gcf,'Tag','radiobutton4'),'Enable','off');
 set(findobj(gcf,'Tag','radiobutton5'),'Enable','off');
 
-%habilitando esforços em Ypara perfis monossimetricos
-set(findobj(gcf,'Tag','esf4'),'Enable','on');
+%habilitando esforços para perfis monossimetricos, Mx e Vy
+set(findobj(gcf,'Tag','esf2'),'Enable','on');
 set(findobj(gcf,'Tag','esf5'),'Enable','on');
 set(findobj(gcf,'Tag','pushbutton14'),'Visible','off');
+
+% desabilitando função para perfis monossimétricos (simétrico em relação a
+% y). Eforços não permitidos: My e Vx, conforme item 5.4.1.1 da NBR 8800.08 
+set(findobj(gcf,'Tag','esf3'),'Enable','off'); % Vx
+set(findobj(gcf,'Tag','esf4'),'Enable','off'); % My
 
        %perfil soldado
        if f1 == 1;
@@ -110,4 +121,19 @@ set(findobj(gcf,'Tag','pushbutton14'),'Visible','off');
                     set(findobj(gcf,'Tag','dimc16'),'Visible','off');
                     set(findobj(gcf,'Tag','dimc17'),'Enable','on');
                 
-        end
+       end
+ if pe==3 % perfil T - para o perfil T esta versão admite somente
+    % socitações normais, flexão em x, e cisalhamento em y.
+                    % fazendo com que a interface não mostre valores de
+                    % solictaçoes para o esta versao náo programa ainda
+                    % não alcança para perfil T, seja porque ainda não foi
+                    % implementado ou a norma não prevê
+                    % set(findobj(gcf,'Tag','esf2'),'String',''); % para momento em x,
+                    set(findobj(gcf,'Tag','esf3'),'String',''); % momento em y; 
+                    set(findobj(gcf,'Tag','esf4'),'String',''); % cortante em x; 
+                    % set(findobj(gcf,'Tag','esf5'),'String',''); % cortante em y;       
+    % Mxsd=0;
+    Mysd=0;
+    Vxsd=0;
+    % Vysd=0;  
+ end

@@ -55,4 +55,10 @@ set(findobj(gcf,'Tag','textofinal'),'String','');
 set(findobj(gcf,'Tag','esfcb'),'String','1.00'); 
 set(findobj(gcf,'Tag','esfcb1'),'String','1.00');
 set(findobj(gcf,'Tag','esfcb2'),'String','1.00'); 
-set(findobj(gcf,'Tag','sinalcb'),'String','='); 
+set(findobj(gcf,'Tag','sinalcb'),'String','=');
+
+%set(findobj(gcf,'Tag','esf1'),'String',''); 
+%set(findobj(gcf,'Tag','esf2'),'String','');
+%set(findobj(gcf,'Tag','esf3'),'String','');
+%set(findobj(gcf,'Tag','esf4'),'String','');
+%set(findobj(gcf,'Tag','esf5'),'String','');

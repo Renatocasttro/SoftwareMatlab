@@ -20,12 +20,40 @@ global m;
 global xg;
 global Cw;
 global perfilname;
+global hPopup;
+global hSTD;
 
-%valor numerico correspondente ao perfil marcado pelo usuario na lista
-marca = get(findobj(gcf,'Tag','popupmenu2'),'Value');
+% %valor numerico correspondente ao perfil marcado pelo usuario na lista
+% marca = get(findobj(gcf,'Tag','popupmenu2'),'Value');
+% %salvando o nome do perfil da lista
+% b = get(findobj(gcf,'Tag','popupmenu2'),'String');
+% perfilname = b(marca);
+
+% Identficação e atribuíçâo às variáveis hSTD e hPopup dos...
+...identificadores dos objetos pertencentes a...
+    ....interface STD (formulário inicial)Esse procedimento é necessário...
+    ... para que as informações relacionadas aos dados do perfis sejam ...
+    ... utilzadas já que existe um outro formulário aberto e esse último...
+    ...(ct) é a interface (formulário) corrente.
+hSTD = findobj('Type', 'figure', 'Name', 'STD'); % Itendifica em hSTD o ...
+...da interface/formulário em que está apresentado/vinculado o componente...
+    ....popupmenu2 que contem a lista de perfis cadastrados
+hPopup = findobj(hSTD, 'Tag', 'popupmenu2'); % Identifica e informa que...
+... componente popupmenu2 está vinculado ao formulário STD (atribuído a...
+    ...variável hSTD). Este componente foi identficado como a variável...
+    ...hPopup.
+
+%valor numérico correspondente ao perfil marcado pelo usuario na lista
+% marca = get(findobj(cfg,'Tag','popupmenu2'),'Value');Número de ordem...
+...ativo na lista hPopup.
+marca = get(hPopup, 'Value');
+
 %salvando o nome do perfil da lista
-b = get(findobj(gcf,'Tag','popupmenu2'),'String');
+% b = get(findobj(cfg,'Tag','popupmenu2'),'String');
+b = get(hPopup, 'String');
+
 perfilname = b(marca);
+
        if f1 == 1;
 %                 %cada par ordenado corresponde a um par linha coluna da
 %                     %matriz de banco de dados

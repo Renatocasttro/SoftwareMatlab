@@ -7,8 +7,10 @@ global Mysd;
 global fleassi;
 global fla;
 global flar;
-%rotina para dimensionamento da resistencia do perfil I para combinaçao de
-%esforços de momentos atuando simultaneamente nos dois eixos do perfil
+
+% Rotina desenvolvida para facilitar a exibição, no relatório, de parâmetros
+% relacionados à atuação de momentos fletores atuantes de forma assimétricas,
+% resultando em componentes deste momentos em relação aos eixos x e y. 
 
 if f4 ==1;
     fleassi = Mxsd/Mxrd;

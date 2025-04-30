@@ -11,16 +11,27 @@ global errov;
 
 %calculando apenas se for compressão
 %Lembrar de desfazer quando for implementada funçao de traçao
-if  Ntsd > 0
-    errov = 7; 
-else
-    if f1 == 1
+% if  Ntsd > 0
+%    errov = 7; 
+% else
+%    if f1 == 1
+%        P_GEO_I_SOL();
+%    else
+%        P_GEO_I_LAM();
+%    end
+
+ if f1 == 1
         P_GEO_I_SOL();
-    else
+ else
         P_GEO_I_LAM();
-    end
-    
-    Compressao_I();
+ end
+ 
+ Esbeltez_global();
+ if Ntsd > 0
+    Tracao_I();
+ else
+   Compressao_I();  
+ end      
     calculo_rm ();
     esbeltez_I();
     flexao_I();
@@ -39,7 +50,6 @@ else
 
     cisalhamento_I();
     Resultados_I();
-end
 
 errof ();
 end
