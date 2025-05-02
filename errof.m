@@ -101,4 +101,8 @@ switch errov;
         set(findobj(gcf,'Tag','textofinal'),'String','NÃO PERMITIDO - cisalhamento seção T - d/tw > 260');
         set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
         errorv = 'NÃO PERMITIDO - cisalhamento seção T - d/tw > 260';
+    case 22 % erro de utilizaçao de perfil I laminado com dimensões inadequadas (mesa esbelta) - Verifique!
+        set(findobj(gcf,'Tag','textofinal'),'String','Perfil I laminado com dimensões inadequadas (mesa esbelta) - Verifique!');
+        set(findobj(gcf,'Tag','textofinal'),'ForegroundColor','red');
+        errorv = 'NÃO PERMITIDO - cisalhamento seção T - d/tw > 260';
 end

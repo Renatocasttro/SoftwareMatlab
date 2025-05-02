@@ -1,5 +1,6 @@
-
-function[] = AreaEf_I() %Adicionei o X e retirei o Ag
+function[] = AreaEf_I() 
+%Barras prismáticas submetidas a força axial de compressão
+%Cálculo da área efetiva da seção transversal, item 5.3.4 NBR 8800/2024
 global f5;
 global h;
 global bf;
@@ -10,6 +11,7 @@ global tfs;
 global bfi;
 global tfi;
 global f1;
+global befm;
 % global E;
 % global fy;
 % global kc;
@@ -21,16 +23,16 @@ if f5 == 1 %se for duplamente simétrico
     %Cálculo de befM (mesa)
 
     if f1 == 1 %Se for soldado 
-       Calc_befm_sol()
+       Calc_befm_sol() %Cálculo da largura efetiva da mesa do perfil I soldado, item 5.3.4.2 NBR 8800(2024)
     else %Se for laminado
-       Calc_befm_lam() 
+       Calc_befm_lam() %Cálculo da largura efetiva da mesa do perfil I laminado, item 5.3.4.2 NBR 8800(2024)
     end
     
     %Cálculo de befA (alma)
     %(b/t) nesse caso independe da simetria
     
     esbeltAA = h/tw;
-    Calc_befa()
+    Calc_befa() %Cálculo da largura efetiva da alma do perfil I, item 5.3.4.2 NBR 8800(2024)
     
     befmsup = befm;
     befminf = befm;
@@ -44,20 +46,20 @@ else %se for monossimétrico
     
     if f1 == 1 %Se for soldado 
         esbeltAL = esbeltALsup;  %calculo befm mesa superior
-        Calc_befm_sol()
+        Calc_befm_sol() %Cálculo da largura efetiva da mesa do perfil I soldado, item 5.3.4.2 NBR 8800(2024)
         befmsup = befm;
 
         esbeltAL = esbeltALinf; %calculo befm mesa inferior
-        Calc_befm_sol()
+        Calc_befm_sol() %Cálculo da largura efetiva da mesa do perfil I soldado, item 5.3.4.2 NBR 8800(2024)
         befminf = befm;
 
     else %Se for laminado
         esbeltAL = esbeltALsup;  %calculo befm mesa superior
-        Calc_befm_lam()
+        Calc_befm_lam() %Cálculo da largura efetiva da mesa do perfil I laminado, item 5.3.4.2 NBR 8800(2024)
         befmsup = befm;
 
         esbeltAL = esbeltALinf;  %calculo befm mesa inferior
-        Calc_befm_lam()
+        Calc_befm_lam() %Cálculo da largura efetiva da mesa do perfil I laminado, item 5.3.4.2 NBR 8800(2024)
         befminf = befm;
     end
     
@@ -65,10 +67,10 @@ else %se for monossimétrico
     %(b/t) nesse caso independe da simetria
     
     esbeltAA = h/tw;
-        Calc_befa()
-    
-end
-
+        Calc_befa() %Cálculo da largura efetiva da alma do perfil I, item 5.3.4.2 NBR 8800(2024)
+  
 %Cálculo de Aef
     
 Aef = ((befminf * tf) * 2) + ((befmsup * tf) * 2) + (befa * tw);
+
+end
