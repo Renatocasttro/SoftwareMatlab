@@ -1,9 +1,24 @@
 
-function X = CALCULO_DE_X(E,Ix,Iy,kx,ky,kz,L,f5,Cw,G,J,Q,Ag,fy,r0,y0)
+function X = CALCULO_DE_X()
+global E;
+global Ix;
+global Iy;
+global kx;
+global ky;
+global kz;
+global L;
+global f5;
+global Cw;
+global G;
+global J;
+global Ag;
+global fy;
 global lbd0;
+global r0;
+global y0;
 
 %Parâmetros da força axial de flambagem
-Nex = (pi^2 * E * Ix)/(kx * L)^2;
+Nex = (pi^2 * E * Ix)/(kx * L)^2; %Não existe mais os coeficientes k!!!
 Ney = (pi^2 * E * Iy)/(ky * L)^2;
 Nez = (1/(r0^2))*(((pi^2 * E * Cw)/(kz * L)^2) + (G/10)*J);  
 Neyz = ((Ney + Nez)/(2*(1-(y0/r0)^2)))*(1 - sqrt(1-((4 * Ney * Nez *(1-(y0/r0)^2))/(Ney + Nez)^2)));
@@ -16,7 +31,7 @@ else
 end
 
 %Cálculo do índice de esbeltez reduzido(lbd0)
-lbd0 = sqrt((Q*Ag*fy)/Ne);
+lbd0 = sqrt((Ag*fy)/Ne);
 
 %Cálculo de X
 if lbd0 > 1.5
