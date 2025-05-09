@@ -12,7 +12,6 @@ global bfi;
 global tfi;
 global f1;
 global befm;
-global befa;
 % global E;
 % global fy;
 % global kc;
@@ -67,7 +66,7 @@ else %se for monossimétrico
     %(b/t) nesse caso independe da simetria
     
     esbeltAA = h/tw;
-    befa = Calc_befa() %Cálculo da largura efetiva da alma do perfil I, item 5.3.4.2 NBR 8800(2024)
+    Calc_befa() %Cálculo da largura efetiva da alma do perfil I, item 5.3.4.2 NBR 8800(2024)
   
 end
 

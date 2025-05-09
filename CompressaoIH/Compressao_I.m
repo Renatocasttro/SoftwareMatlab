@@ -32,7 +32,7 @@ global kc;
 global Aef;
 
 CALCULO_DE_X();
-AreaEf_I();
+AreaEF_I();
 Ncrd = (X*Aef*fy)/(ya1);
 end
 

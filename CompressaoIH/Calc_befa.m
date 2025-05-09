@@ -7,7 +7,10 @@ global E;
 global fy;
 global bf;
 global X;
+global h;
+global tw;
 
+esbeltAA = h/tw;
 esbeltAAlim = (1.49 * sqrt(E/fy))
 if esbeltAA < esbeltAAlim/ sqrt(X)
     befa = h; %Se atender continua o mesmo 

@@ -7,7 +7,9 @@ global E;
 global fy;
 global bf;
 global X;
+global tf;
 
+esbeltAL = bf/(2*tf);
 esbeltALlim = (0.64 * sqrt(E/(fy/kc)))
 if esbeltAL > esbeltALlim / sqrt(X) 
     c2 = 1.49; %item 5.3.4.2 tabela 5
