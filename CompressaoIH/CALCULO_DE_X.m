@@ -1,4 +1,4 @@
-function X = CALCULO_DE_X()
+function[] = CALCULO_DE_X()
 global E;
 global Ix;
 global Iy;
