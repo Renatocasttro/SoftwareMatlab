@@ -33,7 +33,7 @@ global Aef;
 
 % Q = CALCULO_DE_Q(f5,h,bf,tf,tw,bfs,tfs,bfi,tfi,f1,Ag,E,fy,kc);
 % CALCULO_DE_X();
-X = CALCULO_DE_X(E,Ix,Iy,kx,ky,kz,L,f5,Cw,G,J,Q,Ag,fy,r0,y0);
+X = CALCULO_DE_X(E,Ix,Iy,kx,ky,kz,L,f5,Cw,G,J,Ag,fy,r0,y0);
 AreaEf_I();
 % Ncrd = (X*Q*Ag*fy)/(ya1);
 Ncrd = (X*Aef*fy)/(ya1);
