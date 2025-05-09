@@ -12,7 +12,7 @@ global tw;
 
 esbeltAA = h/tw;
 esbeltAAlim = (1.49 * sqrt(E/fy))
-if esbeltAA < esbeltAAlim/ sqrt(X)
+if esbeltAA < esbeltAAlim / sqrt(X)
     befa = h; %Se atender continua o mesmo 
 else
     c2 = 1.31; %item 5.3.4.2 tabela 5

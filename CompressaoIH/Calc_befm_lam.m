@@ -10,7 +10,7 @@ global tf;
 
 esbeltAL = bf/(2*tf);
 esbeltALlim = (0.56 * sqrt(E/fy))
-if esbeltAL > esbeltALlim/ sqrt(X)
+if esbeltAL > esbeltALlim / sqrt(X)
     c2 = 1.49; %item 5.3.4.2 tabela 5
     c1 = 0.22; %item 5.3.4.2 tabela 5
     fel = (c2 * esbeltALlim / esbeltAL)^2 * fy; %item 5.3.4.2 tabela 5
