@@ -15,6 +15,7 @@ global fy;
 global lbd0;
 global r0;
 global y0;
+global X;
 
 %Parâmetros da força axial de flambagem
 %Cálculo da força axial de flambagem, item 5.3.5.1 NBR 8800/2024
